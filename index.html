@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type"> 
+<meta content="utf-8" http-equiv="encoding">
+<script src = "pixi.js"></script>
+</head>
+<body>
+
+<script>
+
+var stage = new PIXI.Container(),
+    renderer = PIXI.autoDetectRenderer(256, 256);
+document.body.appendChild(renderer.view);
+
+
+PIXI.loader
+    .add("img/cat.png")
+    .load(setup);
+    
+function setup()
+{
+    var cat = new PIXI.Sprite(
+        PIXI.loader.resources["img/cat.png"].texture
+    );
+    
+    stage.addChild(cat);
+    
+    renderer.render(stage);
+}
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
