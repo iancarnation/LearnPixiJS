@@ -5,24 +5,23 @@ document.body.appendChild(renderer.view);
 
 
 PIXI.loader
-    .add("img/cat.png")
+    .add("img/tileset.png")
     .load(setup);
     
 function setup()
 {
-    var cat = new PIXI.Sprite(
-        PIXI.loader.resources["img/cat.png"].texture
-    );
+    var texture = PIXI.utils.TextureCache["img/tileset.png"];
     
-    cat.x = 96;
-    cat.y = 96;
+    var subRegion = new PIXI.Rectangle(192,128,64,64);
     
-    cat.anchor.x = 0.5;
-    cat.anchor.y = 0.5;
+    texture.frame = subRegion;
     
-    cat.rotation = 0.5;
+    var rocket = new PIXI.Sprite(texture);
     
-    stage.addChild(cat);
+    rocket.x = 32;
+    rocket.y = 32;
+    
+    stage.addChild(rocket);
     
     renderer.render(stage);
 }
