@@ -1,6 +1,5 @@
 var stage = new PIXI.Container(),
     renderer = PIXI.autoDetectRenderer(512, 512);
-
 document.body.appendChild(renderer.view);
 
 PIXI.loader
@@ -39,6 +38,29 @@ function setup()
     treasure.y = stage.height/2 - treasure.height/2;
     stage.addChild(treasure);
     
+    //Exit door
+    door = new PIXI.Sprite(id["door.png"]);
+    door.position.set(32,0);
+    stage.addChild(door);
+    
+    //Make the blobs
+    var numberOfBlobs = 6,
+        spacing = 48,
+        xOffset = 150;
+    
+    for (var i=0; i<numberOfBlobs; i++)
+    {
+        var blob = new PIXI.Sprite(id["blob.png"]);
+        blob.x = spacing * i + xOffset;
+        blob.y = randomInt(0, stage.height - blob.height);
+        
+        stage.addChild(blob);        
+    }   
     
     renderer.render(stage);
+}
+
+function randomInt(min, max)
+{
+    return Math.floor(Math.random() * (max-min+1)) + min;
 }
