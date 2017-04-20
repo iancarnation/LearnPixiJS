@@ -18,6 +18,10 @@ function setup()
 {
     cat = new PIXI.Sprite(PIXI.loader.resources["img/cat.png"].texture);
     cat.y = 96;
+    
+    cat.vx = 0;
+    cat.vy = 0;
+    
     stage.addChild(cat);
     
     gameLoop();
@@ -27,7 +31,11 @@ function gameLoop()
 {
     requestAnimationFrame(gameLoop);
     
-    cat.x += 1;
+    cat.vx = 1;
+    cat.vy = 1;
+    
+    cat.x += cat.vx;
+    cat.y += cat.vy;
     
     renderer.render(stage);
 }
